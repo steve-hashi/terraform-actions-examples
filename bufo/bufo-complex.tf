@@ -23,19 +23,11 @@ resource "terraform_data" "test-all-separate" {
 
   lifecycle {
     action_trigger {
-      events  = [before_create]
+      events  = [before_create, before_update]
       actions = [action.bufo_print.awesome]
     }
     action_trigger {
-      events  = [before_update]
-      actions = [action.bufo_print.awesome]
-    }
-    action_trigger {
-      events  = [after_create]
-      actions = [action.bufo_print.bigeyes]
-    }
-    action_trigger {
-      events  = [after_update]
+      events  = [after_create, after_update]
       actions = [action.bufo_print.bigeyes]
     }
   }
