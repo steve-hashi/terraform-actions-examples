@@ -7,11 +7,10 @@ provider "aws" {
 # Configure the AAP provider
 # Replace with your AAP instance details
 terraform {
-  required_version = "~> v1.14.0"
   required_providers {
     aap = {
-      source = "dleehr/aap"
-      version = "2.0.0-demo2"
+      source = "ansible/aap"
+      version = "1.4.0-devpreview1"
     }
   }
 }
@@ -157,7 +156,7 @@ resource "null_resource" "emit_event" {
     # on the named lifecycle events: "After creating this resource, run the action"
     action_trigger {
       events  = [after_create]
-      actions = [action.aap_eventdispatch.event]
+      actions = [action.aap_eda_eventstream_post.event]
     }
   }
 }
@@ -165,22 +164,22 @@ resource "null_resource" "emit_event" {
 # This is using a new 'aap_eventstream' data source in the terraform-provider-aap POC
 # The purpose is to look up an EDA Event Stream object by ID so that we know its URL when
 # we want to send an event later.
-data "aap_eventstream" "eventstream" {
+data "aap_eda_eventstream_post" "eventstream" {
   name = "TF Actions Event Stream"
 }
 
 # Sample output just to show that we looked up the Event Stream URL with the above datasource
 output "event_stream_url" {
-  value = data.aap_eventstream.eventstream.url
+  value = data.aap_eda_eventstream_post.eventstream.url
 }
 
 
-# This is using a new 'aap_eventdispatch' action in the terraform-provider-aap POC
+# This is using a new 'aap_eda_eventstream_post' action in the terraform-provider-aap POC
 # The purpose is to POST an event with a payload (config) when triggered, and EDA
 # is configured with a rulebook to extract these details out of the config and dispatch
 # a job
 # TODO: With linked resources we can scope the limit to the resource that was just provisioned
-action "aap_eventdispatch" "event" {
+action "aap_eda_eventstream_post" "event" {
   config {
     limit = "web_server_public_ip"
     template_type = "job"

@@ -13,13 +13,13 @@ resource "aws_instance" "web_server" {
   lifecycle {
     action_trigger {
       events  = [after_create]
-      actions = [action.aap_eventdispatch.configure]
+      actions = [action.aap_eda_eventstream_post.configure]
     }
   }
 }
 
 # TF action to run the new AWS provisioning workflow (after ec2 instance are created)
-action "aap_eventdispatch" "configure" {
+action "aap_eda_eventstream_post" "configure" {
   config {
     limit = "tfademo"
     template_type = "job"

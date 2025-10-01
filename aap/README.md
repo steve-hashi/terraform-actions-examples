@@ -1,11 +1,9 @@
 
 ## Actions implementation details
 
-[Provider ansible/aap - not released](https://registry.terraform.io/providers/ansible/aap)
-  Staged in [dleehr/aap](https://registry.terraform.io/providers/dleehr/aap/latest/docs)
+[Provider ansible/aap dev-preview/alpha](https://registry.terraform.io/providers/ansible/aap)
+  Staged in [ansible/aap](https://registry.terraform.io/providers/ansible/aap/latest)
 
-### Action `eventdispatch`
+### Action `aap_eda_eventstream_post`
 
-Version available in TBD
-
-[Made available in fork](https://github.com/dleehr/terraform-provider-aap)
+Version available in: 1.4.0-devpreview1

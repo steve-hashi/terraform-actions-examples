@@ -13,13 +13,13 @@ resource "aap_host" "host" {
   lifecycle {
     action_trigger {
       events  = [after_create]
-      actions = [action.aap_eventdispatch.update]
+      actions = [action.aap_eda_eventstream_post.update]
     }
   }
 }
 
 # TF action to run the update AWS provisioning job (after the hosts get added to AAP inventory)
-action "aap_eventdispatch" "update" {
+action "aap_eda_eventstream_post" "update" {
   config {
     limit = "tfademo"
     template_type = "job"
