@@ -197,3 +197,42 @@ action "aap_eda_eventstream_post" "event" {
 }
 
 
+# Define an action to send a payload to AAP API.
+action "aap_job" "test" {
+  config {
+    job_template_id     = 1234
+    wait_for_completion = true
+  }
+}
+# Configure the action to trigger after a resource is created
+resource "terraform_data" "trigger-aap-job" {
+  input = "example"
+  lifecycle {
+    action_trigger {
+      events  = [after_create]
+      actions = [action.aap_job.test]
+    }
+  }
+}
+
+
+# Define an action to send a payload to AAP API.
+action "aap_workflow_job" "test" {
+  config {
+    job_template_id     = 1234
+    wait_for_completion = true
+  }
+}
+# Configure the action to trigger after a resource is created
+resource "terraform_data" "trigger-" {
+  input = "example"
+  lifecycle {
+    action_trigger {
+      events  = [after_create]
+      actions = [action.aap_workflow_job.test]
+    }
+  }
+}
+
+
+

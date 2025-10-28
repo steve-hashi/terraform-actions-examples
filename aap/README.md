@@ -7,3 +7,11 @@
 ### Action `aap_eda_eventstream_post`
 
 Version available in: 1.4.0-devpreview1
+
+### Action `aap_job`
+
+PR merged https://github.com/ansible/terraform-provider-aap/pull/155
+
+### Action `aap_workflow_job`
+
+PR pending https://github.com/ansible/terraform-provider-aap/pull/162
