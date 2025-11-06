@@ -1,6 +1,6 @@
-# Steve's sometimes updates list of Terraform action examples
+# Steve's occationally updated list of Terraform action examples
 
-I have borrowed example from provider docs. Some I have manufactured. Perhaps you'll find it useful.
+I have borrowed example from provider docs. Some I have manufactured. Perhaps you'll find it useful. Use as your own risk.
 
 Here's a nice resource for locating Terraform Providers that have actions defined:
 
