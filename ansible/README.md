@@ -1,10 +1,9 @@
 
 ## Actions implementation details
 
-[Community Provider ansible/ansible dev-preview/alpha](https://registry.terraform.io/providers/ansible/ansible)
-  Staged in [ansible/aap](https://registry.terraform.io/providers/ansible/aap/latest)
+[Community Provider ansible/ansible](https://registry.terraform.io/providers/ansible/ansible)
 
 ### Action `ansible_playbook_run`
 
-PR pending https://github.com/ansible/terraform-provider-aap/pull/162
-Docs pending https://github.com/ansible/terraform-provider-ansible/blob/259c93fa1fdced54a59107734c4e19697f4483af/docs/actions/playbook.md 
+PR pending https://github.com/ansible/terraform-provider-ansible/pull/146
+Docs pending https://github.com/DanielMSchmidt/terraform-provider-ansible/blob/3d7ab3690b4cccd5ce1c40c0e9d3003b64c73925/docs/actions/playbook_run.md
