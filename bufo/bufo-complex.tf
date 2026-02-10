@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.14.0-beta1"
+  required_version = ">=1.14.0"
   required_providers {
     bufo = {
       source = "austinvalle/bufo"
@@ -29,6 +29,30 @@ resource "terraform_data" "test-all-separate" {
     }
     action_trigger {
       events  = [after_create, after_update]
+      actions = [action.bufo_print.bigeyes]
+    }
+  }
+}
+
+
+resource "terraform_data" "test-one" {
+}
+
+resource "terraform_data" "test-two" {
+}
+
+# Note, this test will replace (add) the resource trigger
+# and only run 1 action (instead of 2). This is desired
+# and expected behavior.
+resource "terraform_data" "test-trigger-replace" {
+  triggers_replace = [
+    terraform_data.test-one.id,
+    terraform_data.test-two.id
+  ]
+
+  lifecycle {
+    action_trigger {
+      events  = [before_create, before_update]
       actions = [action.bufo_print.bigeyes]
     }
   }
