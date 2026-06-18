@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.14.0-beta1"
+#  required_version = "1.14.0-beta1"
   required_providers {
     bufo = {
       source = "austinvalle/bufo"
